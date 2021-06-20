@@ -35,6 +35,7 @@ class Paladin extends Personaje{
             this.vidaTotal+=200;}
     }
     atacarMelee(objetivo:any):void{
+        console.info(`Has atacado a ${objetivo.nombre}`)
         if(objetivo.dañoMagico<this.dañoFisico){
             objetivo.vidaTotal=objetivo.vidaTotal-(this.dañoFisico+(0.50*this.dañoMagico))
             return console.info(`Has ganado el combate`)
@@ -44,6 +45,7 @@ class Paladin extends Personaje{
         }
     }
     atacarDistancia(objetivo:any):void{
+        console.info(`Has atacado a ${objetivo.nombre}`)
         if(objetivo.dañoMagico<this.dañoMagico){
             objetivo.vidaTotal=objetivo.vidaTotal-(this.dañoMagico+(0.50*this.dañoFisico))
             return console.info(`Has ganado el combate`)
@@ -56,8 +58,14 @@ class Paladin extends Personaje{
         this.equipamiento.push(nuevoEquipo)
         this.dañoFisico+=nuevoEquipo.dañoF;
         this.dañoMagico+=nuevoEquipo.dañoM;
+        this.resistenciaFisica+=nuevoEquipo.resistenciaF;
+        this.resistenciaMagica+=nuevoEquipo.resistenciaM;
         this.vidaTotal=+nuevoEquipo.vida;
     }
-    
+    mostrarEquipamiento():void{
+        for (let i=0;i<this.equipamiento.length;i++){
+            console.info(this.equipamiento[i])       
+        }
+    }
 }  
 export default Paladin;
